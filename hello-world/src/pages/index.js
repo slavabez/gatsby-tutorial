@@ -1,9 +1,14 @@
 import React from "react";
-import { Link } from "gatsby";
+import styled from "styled-components";
+
+const PrettyTitle = styled.h1`
+  color: red;
+`;
+
 
 export default () => (
   <div style={{ margin: "3rem auto", maxWidth: 600 }}>
-    <h1>Richard Hamming on Luck</h1>
+    <PrettyTitle>Richard Hamming on Luck</PrettyTitle>
     <div>
       <p>
         From Richard Hamming’s classic and must-read talk, “
