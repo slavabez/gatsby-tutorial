@@ -1,40 +1,53 @@
 import React from "react";
 import { css } from "react-emotion";
-import { Link } from "gatsby";
+import { StaticQuery, Link, graphql } from "gatsby";
 
 import { rhythm } from "../utils/typography";
 
 const Layout = ({ children }) => {
   return (
-    <div
-      className={css`
-        margin: 0 auto;
-        max-width: 700px;
-        padding: ${rhythm(2)};
-        padding-top: ${rhythm(1.5)};
+    <StaticQuery
+      query={graphql`
+        query {
+          site {
+            siteMetadata {
+              title
+            }
+          }
+        }
       `}
-    >
-      <Link to={`/`}>
-        <h3
+      render={data => (
+        <div
           className={css`
-            margin-bottom: ${rhythm(2)};
-            display: inline-block;
-            font-style: normal;
+            margin: 0 auto;
+            max-width: 700px;
+            padding: ${rhythm(2)};
+            padding-top: ${rhythm(1.5)};
           `}
         >
-          Pandas Eating Lots
-        </h3>
-      </Link>
-      <Link
-        to={`/about/`}
-        className={css`
-          float: right;
-        `}
-      >
-        About
-      </Link>
-      {children}
-    </div>
+          <Link to={`/`}>
+            <h3
+              className={css`
+                margin-bottom: ${rhythm(2)};
+                display: inline-block;
+                font-style: normal;
+              `}
+            >
+              {data.site.siteMetadata.title}
+            </h3>
+          </Link>
+          <Link
+            to={`/about/`}
+            className={css`
+              float: right;
+            `}
+          >
+            About
+          </Link>
+          {children}
+        </div>
+      )}
+    />
   );
 };
 
