@@ -20,8 +20,3 @@ module.exports = {
     }
   ]
 };
-
-exports.onCreateNode = ({ node }) => {
-  console.log("Created a new Node...");
-  console.log(node.internal.type);
-};
