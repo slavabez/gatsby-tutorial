@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 import Layout from "../components/layout";
 
 export default ({ data }) => {
@@ -9,6 +10,16 @@ export default ({ data }) => {
       <div>
         <h1>{post.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{post.frontmatter.title}</title>
+          <meta
+            name="description"
+            content={`This is a page that talks a lot about ${
+              post.frontmatter.title
+            }`}
+          />
+        </Helmet>
       </div>
     </Layout>
   );
